@@ -516,7 +516,7 @@ var queryOptions ={
 0:['apples','peaches'],
 1:['bananas','celery'],
 2:['beaches','fields'],
-3:['bears','fishes'],
+3:['bears','fish'],
 4:['blizzards','droughts'],
 5:['carrots','corn'],
 6:['cherries','grapes'],
@@ -701,9 +701,10 @@ var PromptBarJudgement = {
   type:jsPsychHtmlKeyboardResponse,
   stimulus: function(){
 
-  return '<p style = "max-width:830px;">\
-    The next chart will be about <br>\
-    <span style = "font-size:45px">the number of '+categoriesDict[jsPsych.timelineVariable('set',true)]+'. </span><br>\
+  return '<p style = "max-width:850px;">\
+    The next chart will be about <br><br>\
+    <span style = "font-size:45px">number of '+categoriesDict[jsPsych.timelineVariable('set',true)]+'. </span><br><br>\
+    in each city.\
     Please press the spacebar when you are ready to view the chart.<p>'},
   choices: [' '],
   // choices: ['Continue'],
