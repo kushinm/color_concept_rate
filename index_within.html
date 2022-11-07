@@ -745,7 +745,7 @@ var PromptBarJudgement = {
     var pair = jsPsych.timelineVariable('colors', true); // true argument means evaluate immediately
     return pair[1];
   },
-      ylabel:'number liked',
+      ylabel: function(){return categoriesDict[jsPsych.timelineVariable('set',true)]},
       trial_duration: 2000,
 
     },
