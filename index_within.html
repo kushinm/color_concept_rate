@@ -383,6 +383,7 @@ function saveData(data_object) {
         xhr.onload = function() {
             if(xhr.status == 200){
             var response = JSON.parse(JSON.stringify(xhr.responseText));
+            console.log(response);
 
             }
         };
