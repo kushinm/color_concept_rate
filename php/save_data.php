@@ -1,7 +1,7 @@
 <?php
 
 include('../database_config.php');
-$table_data = "data_log_graph_inf"
+$table_data = "data_log_graph_inf";
 
 $data_array = json_decode(file_get_contents('php://input'), true);
 
