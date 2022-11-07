@@ -1,6 +1,6 @@
 var serverComm = {};
 
-serverComm.logging = true;
+serverComm.logging = false;
 
 serverComm.register_subject = function(subject_id, callback_success, callback_exclude, callback_failure){
   var xhr = new XMLHttpRequest();
@@ -8,11 +8,9 @@ serverComm.register_subject = function(subject_id, callback_success, callback_ex
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onload = function() {
     if(xhr.status == 200){
-     
       var response = JSON.parse(xhr.responseText);
-      //var response = xhr.responseText;
       if(serverComm.logging){
-        console.log('this',response);
+        console.log(response);
       }
       if(response.success){
         if(response.excluded){
@@ -65,7 +63,6 @@ serverComm.save_data = function(data){
         console.log(response);
       }
     }
-  }; 
-  console.log(JSON.stringify(data));
+  };
   xhr.send(JSON.stringify(data));
 }

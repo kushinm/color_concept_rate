@@ -27,7 +27,7 @@
         <link href='https://fonts.googleapis.com/css?family=Avenir:400,700' rel='stylesheet' type='text/css'>
 
         <style> 
-          .text {font-size: 35px; font-weight: bold; color: rgba(255,255,255);}
+          .text {font-size:30px;color: rgba(255,255,255); text-align:center; line-height:200%}
         </style>
     </head>
 
@@ -353,20 +353,6 @@ for (var i = 0; i<numColors; i++){
    var G = Math.pow(10.0,constantG)*(Math.pow((GunPercentG*set_Y[i]),slopeG))
    var B = Math.pow(10.0,constantB)*(Math.pow((GunPercentB*set_Y[i]),slopeB))
    
-
-   //R = (10.0^constantR)*((GunPercentR * set_Y[i])^slopeR)
-   //G = (10.0^constantG)*((GunPercentG * set_Y[i])^slopeG)
-   //B = (10.0^constantB)*((GunPercentB * set_Y[i])^slopeB)
-   //R = pow(10.0,constantR)*pow((GunPercentR * BCP37_Y[i]),slopeR);
-   //G = pow(10.0,constantG)*pow((GunPercentG * BCP37_Y[i]),slopeG);
-   //B = pow(10.0,constantB)*pow((GunPercentB * BCP37_Y[i]),slopeB);
-  
-// This makes the color appear black if it is outside the gammut of the monitor
-   //if(is.na(R)|| is.na(G) || is.na(B)){
-    //  R=FALSE
-     // G = FALSE
-      //B = FALSE
-  // }
   if(R < 0 || R > 255 || G < 0 || G > 255 || B < 0 || B > 255){
     R = 0;
     G = 0;
@@ -382,7 +368,7 @@ Bval[i] = Math.round(B)
 
 // console.log(Rval)
 // console.log(Gval)
-// console.log(Bval)
+// console.log(Bval) 
 
 return `rgba(${Rval[index]}, ${Gval[index]}, ${Bval[index]})`
 
@@ -471,20 +457,20 @@ serverComm.register_subject(workerID, //workerID,
 var categoriesDict = {
 0:['fruits grown'],
 1:['fruits sold'],
-2:['number of picnics'],
+2:['picnics'],
 3:['animals caught'],
 4:['natural disasters'],
 5:['vegetables harvested'],
 6:['fruits eaten'],
-7:['natural disasters experienced'],
-8:['time spent'],
-9:['vegetables cooked'],
+7:['hours spent'],
+8:['vegetables cooked'],
+9:['plays performed'],
 10:['animals housed'],
 11:['square miles covered'],
 12:['books read'],
-13:['number of picnics held'],
-14:[''],
-15:['number of paintings']
+13:['disasters encountered'],
+14:['hours recorded'],
+15:['paintings displayed']
 }
 
 var conceptSetDict = {
@@ -519,30 +505,30 @@ var questions ={
 8:['Which city cooks more '],
 9:['Which city performs more plays about '],
 10:['Which city’s zoos house more '],
-11:['Which city encounters more '],
+11:['Which city is covered by more square miles of '],
 12:['Which city reads more books about '],
 13:['Which city encounters more '],
-14:['Which city records more'],
+14:['Which city records more hours of '],
 15:['Which city’s museum displays more paintings of ']
 }
 
 var queryOptions ={
-0:['apple','peach'],
-1:['banana','celery'],
-2:['beach','field'],
-3:['bear','fish'],
-4:['blizzard','drought'],
-5:['carrot','corn'],
-6:['cherry','grape'],
+0:['apples','peaches'],
+1:['bananas','celery'],
+2:['beaches','fields'],
+3:['bears','fishes'],
+4:['blizzards','droughts'],
+5:['carrots','corn'],
+6:['cherries','grapes'],
 7:['eating','sleeping'],
-8:['eggplant','mushroom'],
+8:['eggplant','mushrooms'],
 9:['evil','peace'],
-10:['frog','lion'],
+10:['frogs','lions'],
 11:['glacial ice','ocean water'],
 12:['justice','love'],
-13:['sandstorm','wildfire'],
+13:['sandstorms','wildfires'],
 14:['shade','sunshine'],
-15:['sky','sunset'],
+15:['skies','sunsets'],
 }
 
 //make a list of lists where the entries of the list are the same as the values in conceptSets
@@ -567,47 +553,33 @@ latinSquareArray = latinSquare(16);
 
 
 
-var booth_trial = {
-                    type: jsPsychHtmlKeyboardResponse,
-                    stimulus: '<p>Experimenter:'+
-                        '<p>First, please add subjectID to the end of the experiment URL & re-load.'+
-                        "<p>Second, which Booth is this: type the letter A or B to continue.",
-                    choices: ['a','b'],
-                   }
-                   loadchecks.push(booth_trial)
+
+// var booth_trial = {
+//                     type: jsPsychHtmlKeyboardResponse,
+//                     stimulus: '<p>Experimenter:'+
+//                         '<p>First, please add subjectID to the end of the experiment URL & re-load.'+
+//                         "<p>Second, which Booth is this: type the letter A or B to continue.",
+//                     choices: ['a','b'],
+//                    }
+//                    loadchecks.push(booth_trial)
 
 
-// Initial welcome screen
-var initial_screen = {
-                type:  jsPsychHtmlButtonResponse,
-                stimulus: '<p>Experimenter:'+
-                    '<p> please double check that the subjectID is at the end of the experiment URL.'+
-                '<br>Then click begin'+
-            '<p> Once you click that button, it will not be possible to restart the experiment.',
-                choices: ['Begin Experiment'] }
-                loadchecks.push(initial_screen);
+// // Initial welcome screen
+// var initial_screen = {
+//                 type:  jsPsychHtmlButtonResponse,
+//                 stimulus: '<p>Experimenter:'+
+//                     '<p> please double check that the subjectID is at the end of the experiment URL.'+
+//                 '<br>Then click begin'+
+//             '<p> Once you click that button, it will not be possible to restart the experiment.',
+//                 choices: ['Begin Experiment'] }
+//                 loadchecks.push(initial_screen);
 
 
                 loadchecks.push({
         type: jsPsychFullscreen,
-        fullscreen_mode: true,  //change to true to turn on & false to turn off   
+        fullscreen_mode: false,  //change to true to turn on & false to turn off   
         on_finish: function (){registration()} // Function to register subject ID
         })
-
-var conceptPairs = []
-var pairColors = []
-var barArrangements = []
-var barAnswers =[]
-var pairCongruences = []
-var pairSemanticDists = []
-var setNumbers = []
-var queries=[]
-
-congruenceConds =  {0:'True',1:'False'}
-semanticConds = {0:'HIGH',1:'LOW'}
-queriedConcepts ={0:0,1:1}
-correctCities = {0:'A',1:'B'}
-
 
     
 
@@ -622,29 +594,44 @@ experimenterName="kmukherjee2@wisc.edu"
 var assigned_condition = null;
 var n_conditions = 16; 
 
-  serverComm.assign_condition(subjectID, n_conditions,
-  function(response){
-      assigned_condition = response.assignedCondition; //Using the table in the database to assign conditions
-      condition_success()
-  },
-  function(){
-        document.querySelector('body').innerHTML = '<p>Our apologies. There was a technical error on our end while loading the experiment.</p><p>You will not be able to complete the experiment. You can contact the researchers at '+experimenterName+' with any questions.</p><p>Our apologies for the trouble.</p>';
-  });
+  // serverComm.assign_condition(subjectID, n_conditions,
+  // function(response){
+  //     assigned_condition = response.assignedCondition; //Using the table in the database to assign conditions
+  //     condition_success()
+  // },
+  // function(){
+  //       document.querySelector('body').innerHTML = '<p>Our apologies. There was a technical error on our end while loading the experiment.</p><p>You will not be able to complete the experiment. You can contact the researchers at '+experimenterName+' with any questions.</p><p>Our apologies for the trouble.</p>';
+  // });
 
 
 
 
 
 
-function condition_success(){
 
 
+var latinSquareIndices = jsPsych.randomization.sampleWithoutReplacement([...Array(16).keys()],16)
 
+for( var block = 0; block<16;block++){
+  var blockCounter=0
 
 var conceptSetsSorted=[]
+var conceptPairs = []
+var pairColors = []
+var barArrangements = []
+var barAnswers =[]
+var pairCongruences = []
+var pairSemanticDists = []
+var setNumbers = []
+var queries=[]
+
+congruenceConds =  {0:'True',1:'False'}
+semanticConds = {0:'HIGH',1:'LOW'}
+queriedConcepts ={0:0,1:1}
+correctCities = {0:'A',1:'B'}
 
 for (var i = 0; i < 16; i++) {
-    conceptSetsSorted[i] = conceptSets[latinSquareArray[assigned_condition][i]]
+    conceptSetsSorted[i] = conceptSets[latinSquareArray[latinSquareIndices[block]][i]]
 }
 
 
@@ -711,16 +698,18 @@ jsPsych.data.addProperties({subjectID: jsPsych.randomization.randomID(10), condi
 
 var PromptBarJudgement = {
     timeline: [{
-  type:jsPsychHtmlButtonResponse,
+  type:jsPsychHtmlKeyboardResponse,
   stimulus: function(){
 
-  return '<p style = "max-width:810px;font-size:25px;text-align:left">\
-    The next chart will be about the number of <br>' +categoriesDict[jsPsych.timelineVariable('set',true)]+'. <br>\
-    Please press Continue when you are ready to view the chart.<p>'},
-  choices: ['Continue'],
-  button_html: '<button class="jspsych-btn">%choice%</button>',
+  return '<p style = "max-width:830px;">\
+    The next chart will be about <br>\
+    <span style = "font-size:45px">the number of '+categoriesDict[jsPsych.timelineVariable('set',true)]+'. </span><br>\
+    Please press the spacebar when you are ready to view the chart.<p>'},
+  choices: [' '],
+  // choices: ['Continue'],
+  // button_html: '<button class="jspsych-btn">%choice%</button>',
   css_classes: ['text'],
-  button_html: '<button class="jspsych-btn" style ="color:rgba(255,255,255)">%choice%</button>',
+  // button_html: '<button class="jspsych-btn" style ="color:rgba(255,255,255)">%choice%</button>',
   
 
     },
@@ -757,7 +746,7 @@ var PromptBarJudgement = {
     return pair[1];
   },
       ylabel:'number liked',
-      trial_duration: 4000,
+      trial_duration: 2000,
 
     },
 
@@ -765,8 +754,8 @@ var PromptBarJudgement = {
   type:jsPsychHtmlKeyboardResponse,
 
   stimulus: function(){
-    return `<p style = "font-size:35px;">${questions[jsPsych.timelineVariable('set',true)]}${queryOptions[jsPsych.timelineVariable('set',true)][jsPsych.timelineVariable('query',true)]}</p>\
-             <p style = "font-size:30px;">City A    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+    return `<p>${questions[jsPsych.timelineVariable('set',true)]}${queryOptions[jsPsych.timelineVariable('set',true)][jsPsych.timelineVariable('query',true)]}</p>\
+             <p style= "font-size:45px">City A    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
               &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City B</p>`},
   choices: ['ArrowLeft','ArrowRight'],
   correctCity: jsPsych.timelineVariable('answer'),
@@ -789,9 +778,34 @@ var PromptBarJudgement = {
 // trials.push(test_prompt,fixation,test_trial,query,test_prompt,fixation,test_trial,query);
 trials.push(PromptBarJudgement);
 
+var blockBreak = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: function(){
+    return `<p>Your accuracy for this block was ${Math.round((jsPsych.data.get().last(64).filter({correct:1}).count()/16)*100)}%</p>\
+             <p>Please press the space bar when you are ready to continue.</p>`},
+  choices: [' '],
+  css_classes:['text']
+}
+trials.push(blockBreak)
+
+if(block==3||block==7||block==11){
+
+var progressBreak = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `<p style = "font-size:35px;">You have completed ${Math.round(((block+1)/16)*100)}% of this study.</p>\
+    <p style = "font-size:35px;">Please press the space bar when you are ready to continue.</p>`,
+    choices: [' '],
+    css_classes:['text']
+  
+}
+trials.push(progressBreak)
+
+}
+}
+
 jsPsych.run(trials);
 
-      }}
+      }
       jsPsychOuter.run(loadchecks);
    
             </script>

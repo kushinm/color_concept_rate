@@ -1,1 +1,2 @@
-# color_concept_rate
+# Graph Inference
+general repository structure for online experiments with jsPsych.

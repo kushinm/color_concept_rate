@@ -1,4 +1,5 @@
 <?php
+
 include('../database_config.php');
 
 $subject_info = json_decode(file_get_contents('php://input'), true);
@@ -9,7 +10,7 @@ try {
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   // Table should have rowID, subjectID, assignedCondition, time
-  $stmt = $conn->prepare("SELECT assignedCondition FROM `$table_conditions` WHERE `rowID` = (SELECT MAX(`rowID`) FROM `$table_conditions`);");
+  $stmt = $conn->prepare("SELECT assignedCondition FROM `$table_conditions` WHERE `row` = (SELECT MAX(`row`) FROM `$table_conditions`);");
 
   $stmt->execute();
   $last_condition = $stmt->fetchColumn();
