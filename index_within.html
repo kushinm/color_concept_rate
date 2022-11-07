@@ -756,7 +756,7 @@ var PromptBarJudgement = {
   type:jsPsychHtmlKeyboardResponse,
 
   stimulus: function(){
-    return `<p>${questions[jsPsych.timelineVariable('set',true)]}${queryOptions[jsPsych.timelineVariable('set',true)][jsPsych.timelineVariable('query',true)]}</p>\
+    return `<p>${questions[jsPsych.timelineVariable('set',true)]}${queryOptions[jsPsych.timelineVariable('set',true)][jsPsych.timelineVariable('query',true)]}?</p>\
              <p style= "font-size:45px">City A    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
               &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City B</p>`},
   choices: ['ArrowLeft','ArrowRight'],
