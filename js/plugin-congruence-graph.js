@@ -80,8 +80,8 @@ var jsPsychCongruenceGraph = (function (jspsych) {
 
             },
             practiceTrial:{
-                type: jspsych.ParameterType.BOOL,
-                default: false,
+                type: jspsych.ParameterType.INT,
+                default: null,
             },
             set: {
                 type: jspsych.ParameterType.INT,
@@ -153,9 +153,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                 this.jsPsych.finishTrial(trial_data);
             };
             
-            
-            
-            var runRefresh = true;
+        
             
             var ctx = document.getElementById('myChart').getContext('2d');
             // ctx.canvas.width  =800;
