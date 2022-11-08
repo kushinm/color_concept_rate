@@ -148,6 +148,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                     semanticCond: trial.semanticCond,
                     correctCity:trial.correctCity,
                     set:trial.set,
+                    practiceTrial: trial.practiceTrial,
                 };
                 this.jsPsych.finishTrial(trial_data);
             };
