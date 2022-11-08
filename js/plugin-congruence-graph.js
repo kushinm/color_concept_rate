@@ -79,6 +79,10 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                 default: true,
 
             },
+            practiceTrial:{
+                type: jspsych.ParameterType.BOOL,
+                default: false,
+            },
             set: {
                 type: jspsych.ParameterType.INT,
                
