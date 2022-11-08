@@ -257,7 +257,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                                 drawBorder: true,
                                 borderWidth:3,
                                 z:100,
-                                borderColor: '#000000',
+                                borderColor: trial.fontColor,
                                 
                             },
                             ticks: {
