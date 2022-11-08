@@ -49,12 +49,17 @@ var jsPsychCongruenceGraph = (function (jspsych) {
             concept1color: {
                 type: jspsych.ParameterType.STRING,
                 // pretty_name: "Allow keys",
-                default: true,
+                default: null,
             },
             concept2color: {
                 type: jspsych.ParameterType.STRING,
                 // pretty_name: "Allow keys",
-                default: true,
+                default: null,
+            },
+            fontColor: {
+                type: jspsych.ParameterType.STRING,
+                // pretty_name: "Allow keys",
+                default: null,
             },
             congruenceCond: {
                 type: jspsych.ParameterType.STRING,
@@ -104,14 +109,14 @@ var jsPsychCongruenceGraph = (function (jspsych) {
             width: 40px;\
             margin: 15px;\
             clear: both;\
-            background-color: ${trial.concept1color};"></div><p style="font-size:35px; margin-top: 15px;float:left">${trial.concept1}</p></div>\
+            background-color: ${trial.concept1color};"></div><p style="font-size:35px; margin-top: 15px;float:left; color:${trial.fontColor}">${trial.concept1}</p></div>\
             <div id = "item2" style = "height:65px;">\
             <div id="box2"  style = "float: left;\
             height: 40px;\
             width: 40px;\
             margin: 15px;\
             clear: both;\
-            background-color: ${trial.concept2color};"></div><p style="font-size:35px; margin-top: 15px;float:left">${trial.concept2}</p></div></div>\
+            background-color: ${trial.concept2color};"></div><p style="font-size:35px; margin-top: 15px;float:left; color:${trial.fontColor}">${trial.concept2}</p></div></div>\
             <div id = "grid" style = "height:100%;width:100%;margin-left:auto;margin-right: auto;  margin-top: 5px;background: #595959"></div>\
             </div>`
             );
@@ -219,7 +224,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                             labels: {
                                 font:{size:35},
                                 boxWidth:45,
-                                color: "black",
+                                color: trial.fontColor,
                                 boxHeight:45,
                                 textAlign: 'left',
                                 padding: 20
@@ -275,12 +280,12 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                                 drawBorder: true,
                                 borderWidth:3,
                                 z:100,
-                                borderColor: '#000000',
+                                borderColor: trial.fontColor,
                                 
                                 
                             },
                             ticks:{display: true,
-                                color:"black",
+                                color: trial.fontColor,
                                 font: {
                                     size: 35,
                                 }}}

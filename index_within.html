@@ -731,6 +731,7 @@ var PromptBarJudgement = {
       semanticCond:jsPsych.timelineVariable('semanticdist'),
       correctCity: jsPsych.timelineVariable('answer'),
       set: jsPsych.timelineVariable('set'),
+      fontColor:getAdjustedColors(28),
       concept1: function() { 
     var pair = jsPsych.timelineVariable('pair', true); // true argument means evaluate immediately
     return pair[0];
