@@ -121,7 +121,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
             margin: 15px;\
             clear: both;\
             background-color: ${trial.concept2color};"></div><p style="font-size:35px; margin-top: 15px;float:left; color:${trial.fontColor}">${trial.concept2}</p></div></div>\
-            <div id = "grid" style = "height:100%;width:100%;margin-left:auto;margin-right: auto;  margin-top: 5px;background: #595959"></div>\
+            <div id = "grid" style = "height:100%;width:100%;margin-left:auto;margin-right: auto;  margin-top: 5px;background:  rgba(61, 58, 57)"></div>\
             </div>`
             );
             
@@ -335,7 +335,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                         cont.innerHTML=""
                         var grid = document.createElement('div');
                         grid.setAttribute("id", "grid");
-                        grid.setAttribute("style", "height:100%;width:100%;margin-left:auto;margin-right: auto;  margin-top: 5px;background: #595959");
+                        grid.setAttribute("style", "height:100%;width:100%;margin-left:auto;margin-right: auto;  margin-top: 5px;background: rgba(61, 58, 57)");
                         cont.appendChild(grid)
                         creategrid();
                         // runRefresh=false;
