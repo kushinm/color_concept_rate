@@ -103,7 +103,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
             display_element.innerHTML='';
             
             
-            display_element.innerHTML+=(`<div class="canvas-container" id="container" style="position:relative; height:400px;width:900px;margin-left:auto;margin-right: auto;  margin-top: 5px;background: #595959">\
+            display_element.innerHTML+=(`<div class="canvas-container" id="container" style="position:relative; height:400px;width:900px;margin-left:auto;margin-right: auto;  margin-top: 5px;background: rgba(61, 58, 57)">\
             <canvas id="myChart" style="float:left;z-index: 1;height: 100%; width:50%; margin-left:auto;margin-right: auto; top:0px;">\
             </canvas>\
             <div id="legend" style="margin-top:100px;float:right;width:35%">\
