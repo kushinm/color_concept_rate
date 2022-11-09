@@ -612,9 +612,30 @@
                           
                           
                           jsPsych.data.addProperties({subjectID: jsPsych.randomization.randomID(10)});
-                          
+
                           var latinSquareIndices = jsPsych.randomization.sampleWithoutReplacement([...Array(16).keys()],16)
                           
+                          // Demographic questions
+                            // Age, gender, race/ethnicity, and language  
+                            var age_lang_demo = {
+                              type: jsPsychSurveyText,
+                              css_classes: 'text',
+                              questions: [
+                              {prompt: "Age", name: 'Age', rows: "1", columns: "3", required: true,},
+                              {prompt: "Gender", name: 'Gender', rows: "1", columns: "15", required: true,},
+                              {prompt: "Race/ethnicity", name: 'Race/ethnicity', rows: "1", columns: "30", required: true,},
+                              {prompt: "List all languages you know", name: "Languages", rows: "6", columns: "60", required: true,}
+                              ],
+                              preamble: "Please answer the following questions.",
+                              button_label: "Done",
+                              randomize_question_order: false
+                              
+                            }
+                            trials.push(age_lang_demo);
+
+
+
+
                           for( var block = 0; block<2;block++){
                             var blockCounter=0
                             
