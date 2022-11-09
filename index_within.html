@@ -692,6 +692,9 @@
                                 setNumbers = jsPsych.randomization.shuffle(setNumbers);
                                 jsPsych.randomization.setSeed(workerID);
                                 queries = jsPsych.randomization.shuffle(queries);
+
+
+
                                 
                                
                                 
@@ -807,6 +810,57 @@
                                               
                                             }
                                           }
+
+                                          var completion= {
+                                            stimulus:'Good job! You have completed all the blocks!<br>\
+                                            Please press the spacebar to answer a few final questions.',
+                                            css_classes: ['text'],
+                                            
+                                            type: jsPsychHtmlKeyboardResponse,
+                                            choices: [' '],
+                                            
+                                          }
+                                          trials.push(completion);
+                                          
+                                          var colorvision = {
+                                            css_classes:['text'],
+                                            type: jsPsychSurveyMultiChoice,
+                                            questions: [
+                                            {prompt: "Do you have difficulty seeing colors or noticing differences<br>between colors compared to the average person?",
+                                            options: ["Yes", "No"],
+                                            horizontal: false,
+                                            required: true, 
+                                            name: 'colorDifficulty'},
+                                            
+                                            {prompt: "Do you consider yourself to be colorblind? ",
+                                            options: ["Yes", "No"],
+                                            horizontal: false,
+                                            required: true, 
+                                            name: 'colorBlind'},
+                                            
+                                            {prompt: "What device did you use to complete this experiment?",
+                                            options: ["Computer", "Tablet", "Phone", "Other"],
+                                            horizontal: false,
+                                            required: true, 
+                                            name: 'device'}
+                                            ],
+                                            preamble: "",
+                                            button_label: "Done",
+                                            randomize_question_order: false,
+                                          }; 
+                                          trials.push(colorvision); 
+                                          
+                                          
+                                          
+                                          
+                                          trials.push({
+                                            type: jsPsychFullscreen,
+                                            fullscreen_mode: false
+                                          })
+
+
+
+
                                           
                                           jsPsych.run(trials);
                                           
