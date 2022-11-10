@@ -335,7 +335,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                                 color = trial.concept2color;
                             } else {
                                 color = trial.concept1color;
-                            }S
+                            }
                         }
                     }
                     
