@@ -652,11 +652,43 @@
                           }
                           trials.push(age_lang_demo);
                           
+                          var instructions = {
+                                type: jsPsychInstructions,
+                                pages:[`<div style ="text-align:left;font-size:20px;line-height:150%"><p>In this task you will be presented with bar charts showing data about pairs of cities across the country, like the one below. For each chart you will be asked a question about the data.<br>
+                                  <br>
+                                  Each trial with have the following sequence:<br>
+                                  1. A description of the topic the chart will be about. This will remain on the screen until you press the spacebar.<br>
+                                  2. A brief display of the chart. During this time, please observe as much as you can about the data.<br>
+                                  3. A flash of a checkerboard image.<br>
+                                  4. A prompt asking you a question about the data.<br>
+                                  
+                                  The prompt will always ask you which of the two cities reported more of a particular quantity. For example, for the chart below, you may be asked "Which city juices more strawberries?"
+                                  <img src="data/practiceImage.png" style="text-align:center;width: 800px; "/></div>
+                                  `,
+                                  `<div style ="text-align:left;font-size:20px;line-height:150%"><p>
+                                  To respond, please use the left arrow to choose the city on the left (in this example, city A) and use the right arrow key to choose the city on the right (in this example, City B).
+                                  <br>
+                                  The trials will be grouped into blocks, and at the end of each block you will be told the percent of correct responses for that block.<br>
+                                  
+                                  If you have any questions please ask them now. If not, we will begin with 4 practice trials. 
+                                  Please press 'Next' or the left arrow key to begin.
+                                  <img src="data/practiceImage.png" style="text-align:center;width: 800px; "/>
+                                  </div>
+                                   `
+                                  
+                                  
+                                  ],
+                                  css_classes:['text'],
+                                  show_clickable_nav: true,
+                                  
+                                }
+                                trials.push(instructions);
+
+
+
+
                           cityList = _.shuffle(cityList);
                           var cityNames;
-                          
-                          
-                          
                           
                           for( var block = 0; block<2;block++){
                             cityNames = Array(16).fill({'cities':cityList[block]});
@@ -692,8 +724,8 @@
                                     query = queriedConcepts[queriedConcept];
                                     answer = correctCities[correctCity];
                                     conceptPairs.push({pair:conceptSetsSorted[counter]})
-                                    pairColors.push({colors:[graphInfConcepts[conceptSetsSorted[counter][0]][congruence][semanticdist],
-                                      graphInfConcepts[conceptSetsSorted[counter][1]][congruence][semanticdist]]})
+                                    pairColors.push({colors:[getAdjustedColors(graphInfConcepts[conceptSetsSorted[counter][0]][congruence][semanticdist]+1),
+                                      getAdjustedColors(graphInfConcepts[conceptSetsSorted[counter][1]][congruence][semanticdist]+1)]});
                                       queries.push({query:query})
                                       // pairColors.push({colors:[getAdjustedColors(3),getAdjustedColors(2)]}),
                                       
