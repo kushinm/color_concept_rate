@@ -110,7 +110,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
         }
         
         trial(display_element, trial) { 
-            console.log(trial.concept1color)
+
             $("#jspsych-content").css('max-width', '750px');
             display_element.innerHTML='';
             
@@ -335,7 +335,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                                 color = trial.concept2color;
                             } else {
                                 color = trial.concept1color;
-                            }
+                            }S
                         }
                     }
                     
