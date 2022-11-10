@@ -372,7 +372,7 @@
       return `rgba(${Rval[index]}, ${Gval[index]}, ${Bval[index]})`
       
     }
-
+    
     var textStyle = document.getElementById("textStyle");
     textStyle.innerHTML = `.text {line-height:150%; font-size: 25px; color:${getAdjustedColors(29)}`;
     
@@ -533,6 +533,26 @@
         15:['skies','sunsets'],
       }
       
+      var cityList = {
+        0:['A','B'],
+        1:['C','D'],
+        2:['E','F'],
+        3:['G','H'],
+        4:['I','J'],
+        5:['K','L'],
+        6:['M','N'],
+        7:['O','P'],
+        8:['Q','R'],
+        9:['S','T'],
+        10:['U','V'],
+        11:['W','X'],
+        12:['Y','Z'],
+        13:['α','β'],
+        14:['γ','δ'],
+        15:['ε','ζ'],
+        
+      }
+      
       //make a list of lists where the entries of the list are the same as the values in conceptSets
       var conceptSets = Object.values(conceptSetDict);
       
@@ -611,31 +631,35 @@
                           
                           
                           jsPsych.data.addProperties({subjectID: jsPsych.randomization.randomID(10)});
-
+                          
                           var latinSquareIndices = jsPsych.randomization.sampleWithoutReplacement([...Array(16).keys()],16)
                           
                           // Demographic questions
-                            // Age, gender, race/ethnicity, and language  
-                            var age_lang_demo = {
-                              type: jsPsychSurveyText,
-                              css_classes: 'text',
-                              questions: [
-                              {prompt: "Age", name: 'Age', rows: "1", columns: "3", required: true,},
-                              {prompt: "Gender", name: 'Gender', rows: "1", columns: "15", required: true,},
-                              {prompt: "Race/ethnicity", name: 'Race/ethnicity', rows: "1", columns: "30", required: true,},
-                              {prompt: "List all languages you know", name: "Languages", rows: "6", columns: "60", required: true,}
-                              ],
-                              preamble: "Please answer the following questions.",
-                              button_label: "Done",
-                              randomize_question_order: false
-                              
-                            }
-                            trials.push(age_lang_demo);
-
-
-
-
+                          // Age, gender, race/ethnicity, and language  
+                          var age_lang_demo = {
+                            type: jsPsychSurveyText,
+                            css_classes: 'text',
+                            questions: [
+                            {prompt: "Age", name: 'Age', rows: "1", columns: "3", required: true,},
+                            {prompt: "Gender", name: 'Gender', rows: "1", columns: "15", required: true,},
+                            {prompt: "Race/ethnicity", name: 'Race/ethnicity', rows: "1", columns: "30", required: true,},
+                            {prompt: "List all languages you know", name: "Languages", rows: "6", columns: "60", required: true,}
+                            ],
+                            preamble: "Please answer the following questions.",
+                            button_label: "Done",
+                            randomize_question_order: false
+                            
+                          }
+                          trials.push(age_lang_demo);
+                          
+                          cityList = _.shuffle(cityList);
+                          var cityNames;
+                          
+                          
+                          
+                          
                           for( var block = 0; block<2;block++){
+                            cityNames = Array(16).fill({'cities':cityList[block]});
                             var blockCounter=0
                             
                             var conceptSetsSorted=[]
@@ -712,11 +736,11 @@
                                 setNumbers = jsPsych.randomization.shuffle(setNumbers);
                                 jsPsych.randomization.setSeed(workerID);
                                 queries = jsPsych.randomization.shuffle(queries);
-
-
-
                                 
-                               
+                                
+                                
+                                
+                                
                                 
                                 
                                 
@@ -757,6 +781,14 @@
                                           correctCity: jsPsych.timelineVariable('answer'),
                                           set: jsPsych.timelineVariable('set'),
                                           fontColor:getAdjustedColors(29),
+                                          city1:function() { 
+                                            var pair = jsPsych.timelineVariable('cities', true); // true argument means evaluate immediately
+                                            return pair[0];
+                                          },
+                                          city2:function() { 
+                                            var pair = jsPsych.timelineVariable('cities', true); // true argument means evaluate immediately
+                                            return pair[1];
+                                          },
                                           concept1: function() { 
                                             var pair = jsPsych.timelineVariable('pair', true); // true argument means evaluate immediately
                                             return pair[0];
@@ -767,11 +799,11 @@
                                           },
                                           concept1color:function() { 
                                             var pair = jsPsych.timelineVariable('colors', true); // true argument means evaluate immediately
-                                            return getAdjustedColors(pair[0]+1);
+                                            return pair[0];
                                           },
                                           concept2color:function() { 
                                             var pair = jsPsych.timelineVariable('colors', true); // true argument means evaluate immediately
-                                            return getAdjustedColors(pair[1]+1);
+                                            return pair[1];
                                           },
                                           ylabel: function(){return categoriesDict[jsPsych.timelineVariable('set',true)]},
                                           trial_duration: 2000,
@@ -783,8 +815,8 @@
                                           
                                           stimulus: function(){
                                             return `<p>${questions[jsPsych.timelineVariable('set',true)]}${queryOptions[jsPsych.timelineVariable('set',true)][jsPsych.timelineVariable('query',true)]}?</p>\
-                                            <p style= "font-size:45px">City A    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
-                                              &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City B</p>`},
+                                            <p style= "font-size:45px">City ${jsPsych.timelineVariable('cities', true)[0]} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+                                              &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City ${jsPsych.timelineVariable('cities', true)[1]}</p>`},
                                               choices: ['ArrowLeft','ArrowRight'],
                                               correctCity: jsPsych.timelineVariable('answer'),
                                               set: jsPsych.timelineVariable('set'),
@@ -795,7 +827,7 @@
                                             ],
                                             //timeline_variables: [..._.flatten(sketchTrialstims),..._.flatten(sketchTrialconcepts)]};
                                             timeline_variables: _.merge(_.flatten(conceptPairs), _.flatten(pairColors),_.flatten(barArrangements),
-                                            _.flatten(barAnswers),_.flatten(pairCongruences),_.flatten(pairSemanticDists),_.flatten(setNumbers),_.flatten(queries))
+                                            _.flatten(barAnswers),_.flatten(pairCongruences),_.flatten(pairSemanticDists),_.flatten(setNumbers),_.flatten(queries),_.flatten(cityNames))
                                           }
                                           
                                           
@@ -830,7 +862,7 @@
                                               
                                             }
                                           }
-
+                                          
                                           var completion= {
                                             stimulus:'Good job! You have completed all the blocks!<br>\
                                             Please press the spacebar to answer a few final questions.',
@@ -877,10 +909,10 @@
                                             type: jsPsychFullscreen,
                                             fullscreen_mode: false
                                           })
-
-
-
-
+                                          
+                                          
+                                          
+                                          
                                           
                                           jsPsych.run(trials);
                                           

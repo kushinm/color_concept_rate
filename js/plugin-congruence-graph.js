@@ -83,6 +83,18 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                 type: jspsych.ParameterType.INT,
                 default: null,
             },
+            city1:{
+                type: jspsych.ParameterType.STRING,
+                // pretty_name: "Allow keys",
+                default: null,
+
+            },
+            city2:{
+                type: jspsych.ParameterType.STRING,
+                // pretty_name: "Allow keys",
+                default: null,
+
+            },
             set: {
                 type: jspsych.ParameterType.INT,
                
@@ -175,7 +187,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                 var barHeights2 =  [ getRandNum(20,10,-10), getRandNum(60,10,-10)]
             }
             
-            var labels = ["City A","City B"];
+            var labels = [`City ${trial.city1}`,`City ${trial.city2}`];
             const data = {
                 labels: labels,
                 datasets: [
@@ -254,7 +266,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                                 text: trial.ylabel,
                                 font:{size:35},
                                 //boxWidth:25,
-                                color: "black",
+                                color: trial.fontColor,
                             },
                             grid: {display: false,
                                 drawBorder: true,
