@@ -38,7 +38,7 @@
   
   
   <script type="text/javascript">
-    console.log('V3.0')
+    console.log('V3.1')
     
     
     // function to adjust the colors for the particular monitor the experiment is being conducted on.
@@ -683,6 +683,238 @@
                                   
                                 }
                                 trials.push(instructions);
+
+                                trials.push(
+                                {
+                                  type:jsPsychHtmlKeyboardResponse,
+                                  stimulus: function(){
+                                    
+                                    return '<p style = "max-width:850px;">\
+                                      The next chart will be about <br><br>\
+                                      <span style = "font-size:45px">number of '+'restaurant reviews'+' </span><br><br>\
+                                      in each city.<br>\
+                                      Please press the spacebar when you are ready to view the chart.<p>'},
+                                        choices: [' '],
+                                        // choices: ['Continue'],
+                                        // button_html: '<button class="jspsych-btn">%choice%</button>',
+                                        css_classes: ['text'],
+                                        // button_html: '<button class="jspsych-btn" style ="color:rgba(255,255,255)">%choice%</button>',
+                                        
+                                        
+                                      },
+                                      {
+                                        
+                                        type: jsPsychHtmlKeyboardResponse,
+                                        stimulus: '<div style="font-size:60px;">+</div>',
+                                        choices: "NO_KEYS",
+                                        trial_duration: 500,
+                                        css_classes: ['text']
+                                        
+                                      },
+                                      {
+                                        type: jsPsychCongruenceGraph,
+                                        innerHigh:true,
+                                        correctCity: 'A',
+                                        practiceTrial:1,
+                                        fontColor:getAdjustedColors(29),
+                                        city1:'A',
+                                        city2:'B',
+                                        concept1: 'angry',
+                                        concept2:'disgust',
+                                        concept1color:getAdjustedColors(63),
+                                        concept2color:getAdjustedColors(54),
+                                        ylabel: 'reviews written',
+                                        trial_duration: 2000,
+                                        
+                                      },
+                                      {
+                                        type:jsPsychHtmlKeyboardResponse,
+                                        
+                                        stimulus: function(){
+                                          return `<p>Which city’s restaurant reviews express more disgust?</p>\
+                                          <p style= "font-size:45px">City A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+                                            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City B</p>`},
+                                            choices: ['ArrowLeft','ArrowRight'],
+                                            correctCity: 'A',
+                                            css_classes: ['text']
+                                          },
+                                          {
+                                            type:jsPsychHtmlKeyboardResponse,
+                                            stimulus: function(){
+                                              
+                                              return '<p style = "max-width:850px;">\
+                                                The next chart will be about <br><br>\
+                                                <span style = "font-size:45px">number of '+'hours spent'+' </span><br><br>\
+                                                in each city.<br>\
+                                                Please press the spacebar when you are ready to view the chart.<p>'},
+                                                  choices: [' '],
+                                                  // choices: ['Continue'],
+                                                  // button_html: '<button class="jspsych-btn">%choice%</button>',
+                                                  css_classes: ['text'],
+                                                  // button_html: '<button class="jspsych-btn" style ="color:rgba(255,255,255)">%choice%</button>',
+                                                  
+                                                  
+                                                },
+                                                {
+                                                  
+                                                  type: jsPsychHtmlKeyboardResponse,
+                                                  stimulus: '<div style="font-size:60px;">+</div>',
+                                                  choices: "NO_KEYS",
+                                                  trial_duration: 500,
+                                                  css_classes: ['text']
+                                                  
+                                                },
+                                                
+                                                {
+                                                  type: jsPsychCongruenceGraph,
+                                                  innerHigh:false,
+                                                  correctCity: 'B',
+                                                  practiceTrial:1,
+                                                  fontColor:getAdjustedColors(29),
+                                                  city1:'A',
+                                                  city2:'B',
+                                                  concept1: 'working',
+                                                  concept2:'leisure',
+                                                  concept1color:getAdjustedColors(26),
+                                                  concept2color:getAdjustedColors(17),
+                                                  ylabel: 'hours spent',
+                                                  trial_duration: 2000,
+                                                  
+                                                },
+                                                {
+                                                  type:jsPsychHtmlKeyboardResponse,
+                                                  
+                                                  stimulus: function(){
+                                                    return `<p>Which city spends more weekend hours on leisure?</p>\
+                                                    <p style= "font-size:45px">City A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+                                                      &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City B</p>`},
+                                                      choices: ['ArrowLeft','ArrowRight'],
+                                                      correctCity: 'B',
+                                                      
+                                                      css_classes: ['text']
+                                                    },
+                                                    {
+                                                      type:jsPsychHtmlKeyboardResponse,
+                                                      stimulus: function(){
+                                                        
+                                                        return '<p style = "max-width:850px;">\
+                                                          The next chart will be about <br><br>\
+                                                          <span style = "font-size:45px">number of '+'times commuted'+' </span><br><br>\
+                                                          in each city.<br>\
+                                                          Please press the spacebar when you are ready to view the chart.<p>'},
+                                                            choices: [' '],
+                                                            // choices: ['Continue'],
+                                                            // button_html: '<button class="jspsych-btn">%choice%</button>',
+                                                            css_classes: ['text'],
+                                                            // button_html: '<button class="jspsych-btn" style ="color:rgba(255,255,255)">%choice%</button>',
+                                                            
+                                                            
+                                                          },
+                                                          {
+                                                            
+                                                            type: jsPsychHtmlKeyboardResponse,
+                                                            stimulus: '<div style="font-size:60px;">+</div>',
+                                                            choices: "NO_KEYS",
+                                                            trial_duration: 500,
+                                                            css_classes: ['text']
+                                                            
+                                                          },
+                                                          {
+                                                            type: jsPsychCongruenceGraph,
+                                                            innerHigh:true,
+                                                            correctCity: 'B',
+                                                            practiceTrial:1,
+                                                            fontColor:getAdjustedColors(29),
+                                                            city1:'A',
+                                                            city2:'B',
+                                                            concept1: 'day',
+                                                            concept2:'night',
+                                                            concept1color:getAdjustedColors(23),
+                                                            concept2color:getAdjustedColors(26),
+                                                            ylabel: 'times commuted',
+                                                            trial_duration: 2000,
+                                                            
+                                                          }, 
+                                                          {
+                                                            type:jsPsychHtmlKeyboardResponse,
+                                                            
+                                                            stimulus: function(){
+                                                              return `<p>Which city’s employees commute more times in the day?</p>\
+                                                              <p style= "font-size:45px">City A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+                                                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City B</p>`},
+                                                                choices: ['ArrowLeft','ArrowRight'],
+                                                                correctCity: 'B',
+                                                                css_classes: ['text']
+                                                              },
+                                                              {
+                                                                type:jsPsychHtmlKeyboardResponse,
+                                                                stimulus: function(){
+                                                                  
+                                                                  return '<p style = "max-width:850px;">\
+                                                                    The next chart will be about <br><br>\
+                                                                    <span style = "font-size:45px">number of '+'fruits juiced'+' </span><br><br>\
+                                                                    in each city.<br>\
+                                                                    Please press the spacebar when you are ready to view the chart.<p>'},
+                                                                      choices: [' '],
+                                                                      // choices: ['Continue'],
+                                                                      // button_html: '<button class="jspsych-btn">%choice%</button>',
+                                                                      css_classes: ['text'],
+                                                                      // button_html: '<button class="jspsych-btn" style ="color:rgba(255,255,255)">%choice%</button>',
+                                                                      
+                                                                      
+                                                                    },
+                                                                    {
+                                                                      
+                                                                      type: jsPsychHtmlKeyboardResponse,
+                                                                      stimulus: '<div style="font-size:60px;">+</div>',
+                                                                      choices: "NO_KEYS",
+                                                                      trial_duration: 500,
+                                                                      css_classes: ['text']
+                                                                      
+                                                                    },
+                                                                    {
+                                                                      type: jsPsychCongruenceGraph,
+                                                                      innerHigh:false,
+                                                                      correctCity: 'B',
+                                                                      practiceTrial:1,
+                                                                      fontColor:getAdjustedColors(29),
+                                                                      city1:'A',
+                                                                      city2:'B',
+                                                                      concept1: 'strawberry',
+                                                                      concept2:'mango',
+                                                                      concept1color:getAdjustedColors(63),
+                                                                      concept2color:getAdjustedColors(71),
+                                                                      ylabel: 'fruits juiced',
+                                                                      trial_duration: 2000,
+                                                                      
+                                                                    },
+                                                                    {
+                                                                      type:jsPsychHtmlKeyboardResponse,
+                                                                      
+                                                                      stimulus: function(){
+                                                                        return `<p>Which city juices more mangoes?</p>\
+                                                                        <p style= "font-size:45px">City A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+                                                                          &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City B</p>`},
+                                                                          choices: ['ArrowLeft','ArrowRight'],
+                                                                          correctCity: 'B',
+                                                                          css_classes: ['text']
+                                                                        }
+                                                                        
+                                                                        )
+
+                                                                        trials.push({
+                                                                          type: jsPsychHtmlKeyboardResponse,
+                                                                          stimulus: `Good job! You have completed the practice trials.<br>\ 
+                                                                          We will now begin with block 1 of the experiment. Please press the spacebar to begin.`,
+                                                                          css_classes:['text'],
+                                                                          choices:[' ']
+
+                                                                        })
+
+
+
+
+
 
 
 
