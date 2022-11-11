@@ -352,7 +352,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                         creategrid();
                         // runRefresh=false;
                         
-                    }, 1700);
+                    }, 1500);
         
                
                     
