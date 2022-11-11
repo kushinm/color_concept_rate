@@ -1195,18 +1195,18 @@
                                                                                       fullscreen_mode: false
                                                                                     });
                                                                                     
-                                                                                    var finalScreen= {
+                                                                               
+                                                                                    jsPsych.run(trials);
+                                                                                    
+                                                                                  }
+                                                                                  var finalScreen= {
                                                                                       type: jsPsychHtmlKeyboardResponse,
                                                                                       stimulus:'<p>Experiment complete! You may now close the experiment.</p>',
                                                                                       choices:['NO_KEYS'],
                                                                                       css_classes:['text']
                                                                                     }
-                                                                                    trials.push(finalScreen);
+                                                                                    loadchecks.push(finalScreen);
                                                                                     
-                                                                                    
-                                                                                    jsPsych.run(trials);
-                                                                                    
-                                                                                  }
                                                                                   jsPsychOuter.run(loadchecks);
                                                                                   
                                                                                 </script>
