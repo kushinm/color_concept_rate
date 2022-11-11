@@ -763,7 +763,14 @@
                                         &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City B</p>`},
                                         choices: ['ArrowLeft','ArrowRight'],
                                         correctCity: 'A',
-                                        css_classes: ['text']
+                                        css_classes: ['text'],
+                                        concept1: 'angry',
+                                        concept2:'disgust',
+                                        concept1color:getAdjustedColors(63),
+                                        concept2color:getAdjustedColors(54),
+                                        semanticCond: "HIGH",
+                                        congruenceCond: "True",
+                                        innerHigh:true
                                       },
                                       {
                                         type:jsPsychHtmlKeyboardResponse,
@@ -820,8 +827,14 @@
                                                   &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City B</p>`},
                                                   choices: ['ArrowLeft','ArrowRight'],
                                                   correctCity: 'B',
-                                                  
-                                                  css_classes: ['text']
+                                                  css_classes: ['text'],
+                                                  concept1: 'working',
+                                                  concept2:'leisure',
+                                                  concept1color:getAdjustedColors(46),
+                                                  concept2color:getAdjustedColors(11),
+                                                  semanticCond: "Low",
+                                                  congruenceCond: "True",
+                                                  innerHigh:true
                                                 },
                                                 {
                                                   type:jsPsychHtmlKeyboardResponse,
@@ -877,7 +890,14 @@
                                                             &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City B</p>`},
                                                             choices: ['ArrowLeft','ArrowRight'],
                                                             correctCity: 'B',
-                                                            css_classes: ['text']
+                                                            css_classes: ['text'],
+                                                            concept1: 'day',
+                                                            concept2:'night',
+                                                            concept1color:getAdjustedColors(50),
+                                                            concept2color:getAdjustedColors(24),
+                                                            semanticCond: "Low",
+                                                            congruenceCond: "False",
+                                                            innerHigh:true
                                                           },
                                                           {
                                                             type:jsPsychHtmlKeyboardResponse,
@@ -918,7 +938,7 @@
                                                                   concept1color:getAdjustedColors(71),
                                                                   concept2color:getAdjustedColors(63),
                                                                   semanticCond:'HIGH',
-                                                                  congruenceCond: "True",
+                                                                  congruenceCond: "False",
                                                                   ylabel: 'fruits juiced',
                                                                   trial_duration: 2000,
                                                                   save_trial_parameters:{innerHigh:true,city1:true,city2:true}
@@ -933,7 +953,14 @@
                                                                       &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City B</p>`},
                                                                       choices: ['ArrowLeft','ArrowRight'],
                                                                       correctCity: 'B',
-                                                                      css_classes: ['text']
+                                                                      css_classes: ['text'],
+                                                                      concept1: 'strawberry',
+                                                                      concept2:'mango',
+                                                                      concept1color:getAdjustedColors(71),
+                                                                      concept2color:getAdjustedColors(63),
+                                                                      semanticCond: "HIGH",
+                                                                      congruenceCond: "False",
+                                                                      innerHigh:true
                                                                     }
                                                                     
                                                                     )
@@ -1121,7 +1148,26 @@
                                                                                         choices: ['ArrowLeft','ArrowRight'],
                                                                                         correctCity: jsPsych.timelineVariable('answer'),
                                                                                         set: jsPsych.timelineVariable('set'),
-                                                                                        css_classes: ['text']
+                                                                                        css_classes: ['text'],
+                                                                                        concept1: function() { 
+                                                                                        var pair = jsPsych.timelineVariable('pair', true); // true argument means evaluate immediately
+                                                                                        return pair[0];
+                                                                                      },
+                                                                                      concept2:function() { 
+                                                                                        var pair = jsPsych.timelineVariable('pair', true); // true argument means evaluate immediately
+                                                                                        return pair[1];
+                                                                                      },
+                                                                                      concept1color:function() { 
+                                                                                        var pair = jsPsych.timelineVariable('colors', true); // true argument means evaluate immediately
+                                                                                        return pair[0];
+                                                                                      },
+                                                                                      concept2color:function() { 
+                                                                                        var pair = jsPsych.timelineVariable('colors', true); // true argument means evaluate immediately
+                                                                                        return pair[1];
+                                                                                      },
+                                                                                      congruenceCond:jsPsych.timelineVariable('congruence'),
+                                                                                    semanticCond:jsPsych.timelineVariable('semanticdist'),
+                                                                                    innerHigh:jsPsych.timelineVariable('innerHigh'),
                                                                                       }
                                                                                       
                                                                                       
