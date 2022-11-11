@@ -66,12 +66,12 @@ var jsPsychHtmlKeyboardResponse = (function (jspsych) {
           concept1: {
               type: jspsych.ParameterType.HTML_STRING,
               pretty_name: "concept1",
-              default: undefined,
+              default: null,
           },
           concept2: {
               type: jspsych.ParameterType.HTML_STRING,
               pretty_name: "concept2",
-              default: undefined,
+              default: null,
           },
           innerHigh: {
               type: jspsych.ParameterType.BOOL,
