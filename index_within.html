@@ -39,7 +39,7 @@
   
   
   <script type="text/javascript">
-    console.log('V3.5')
+    console.log('4')
     
     
     // function to adjust the colors for the particular monitor the experiment is being conducted on.
@@ -724,8 +724,11 @@ set_Yadj = [0,-1.0,0,-1.0,0,0,0,0,0,0,0,+2.5,0,0,0,0,0,+2.5,0,0,0,0,0,1.01,1.63,
                                         concept2:'disgust',
                                         concept1color:getAdjustedColors(63),
                                         concept2color:getAdjustedColors(54),
+                                        semanticCond: "HIGH",
+                                        congruenceCond: "True",
                                         ylabel: 'reviews written',
                                         trial_duration: 2000,
+                                        save_trial_parameters:{innerHigh:true}
                                         
                                       },
                                       {
@@ -776,10 +779,13 @@ set_Yadj = [0,-1.0,0,-1.0,0,0,0,0,0,0,0,+2.5,0,0,0,0,0,+2.5,0,0,0,0,0,1.01,1.63,
                                                   city2:'B',
                                                   concept1: 'working',
                                                   concept2:'leisure',
-                                                  concept1color:getAdjustedColors(26),
-                                                  concept2color:getAdjustedColors(17),
+                                                  semanticCond: "LOW",
+                                                  congruenceCond: "True",
+                                                  concept1color:getAdjustedColors(46),
+                                                  concept2color:getAdjustedColors(11),
                                                   ylabel: 'hours spent',
                                                   trial_duration: 2000,
+                                                  save_trial_parameters:{innerHigh:true}
                                                   
                                                 },
                                                 {
@@ -830,10 +836,13 @@ set_Yadj = [0,-1.0,0,-1.0,0,0,0,0,0,0,0,+2.5,0,0,0,0,0,+2.5,0,0,0,0,0,1.01,1.63,
                                                             city2:'B',
                                                             concept1: 'day',
                                                             concept2:'night',
-                                                            concept1color:getAdjustedColors(23),
-                                                            concept2color:getAdjustedColors(26),
+                                                            concept1color:getAdjustedColors(50),
+                                                            concept2color:getAdjustedColors(24),
+                                                            semanticCond: "LOW",
+                                                            congruenceCond: "False",
                                                             ylabel: 'times commuted',
                                                             trial_duration: 2000,
+                                                            save_trial_parameters:{innerHigh:true}
                                                             
                                                           }, 
                                                           {
@@ -883,10 +892,13 @@ set_Yadj = [0,-1.0,0,-1.0,0,0,0,0,0,0,0,+2.5,0,0,0,0,0,+2.5,0,0,0,0,0,1.01,1.63,
                                                                       city2:'B',
                                                                       concept1: 'strawberry',
                                                                       concept2:'mango',
-                                                                      concept1color:getAdjustedColors(63),
-                                                                      concept2color:getAdjustedColors(71),
+                                                                      concept1color:getAdjustedColors(71),
+                                                                      concept2color:getAdjustedColors(63),
+                                                                      semanticCond:'HIGH',
+                                                                      congruenceCond: "True",
                                                                       ylabel: 'fruits juiced',
                                                                       trial_duration: 2000,
+                                                                      save_trial_parameters:{innerHigh:true}
                                                                       
                                                                     },
                                                                     {
@@ -1072,6 +1084,7 @@ set_Yadj = [0,-1.0,0,-1.0,0,0,0,0,0,0,0,+2.5,0,0,0,0,0,+2.5,0,0,0,0,0,1.01,1.63,
                                           },
                                           ylabel: function(){return categoriesDict[jsPsych.timelineVariable('set',true)]},
                                           trial_duration: 2000,
+                                          save_trial_parameters:{innerHigh:true}
                                           
                                         },
                                         
