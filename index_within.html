@@ -656,17 +656,17 @@ set_Yadj = [0,-1.0,0,-1.0,0,0,0,0,0,0,0,+2.5,0,0,0,0,0,+2.5,0,0,0,0,0,1.01,1.63,
                                 type: jsPsychInstructions,
                                 pages:[`<div style ="text-align:left;font-size:20px;line-height:150%"><p>In this task you will be presented with bar charts showing data about pairs of cities across the country, like the one below. For each chart you will be asked a question about the data.<br>
                                   <br>
-                                  Each trial with have the following sequence:<br>
+                                  Each trial will have the following sequence:<br>
                                   1. A description of the topic the chart will be about. This will remain on the screen until you press the spacebar.<br>
                                   2. A brief display of the chart. During this time, please observe as much as you can about the data.<br>
                                   3. A flash of a checkerboard image.<br>
-                                  4. A prompt asking you a question about the data.<br>
+                                  4. A prompt asking you a question about the data in the chart.<br>
                                   
                                   The prompt will always ask you which of the two cities reported more of a particular quantity. For example, for the chart below, you may be asked "Which city juices more strawberries?"
                                   <img src="data/practiceImage.png" style="text-align:center;width: 800px; "/></div>
                                   `,
                                   `<div style ="text-align:left;font-size:20px;line-height:150%"><p>
-                                  To respond, please use the left arrow to choose the city on the left (in this example, city A) and use the right arrow key to choose the city on the right (in this example, City B).
+                                  To respond, please use the left arrow to choose the city on the left (in this example, City A) and use the right arrow key to choose the city on the right (in this example, City B).
                                   <br>
                                   The trials will be grouped into blocks, and at the end of each block you will be told the percent of correct responses for that block.<br>
                                   
@@ -1129,7 +1129,7 @@ set_Yadj = [0,-1.0,0,-1.0,0,0,0,0,0,0,0,+2.5,0,0,0,0,0,+2.5,0,0,0,0,0,1.01,1.63,
                                           
                                           var completion= {
                                             stimulus:'Good job! You have completed all the blocks!<br>\
-                                            Please press the spacebar to end the experiment.',
+                                            Please press the spacebar and call in the experimenter to begin a color vision check.',
                                             css_classes: ['text'],
                                             
                                             type: jsPsychHtmlKeyboardResponse,
@@ -1137,14 +1137,33 @@ set_Yadj = [0,-1.0,0,-1.0,0,0,0,0,0,0,0,+2.5,0,0,0,0,0,+2.5,0,0,0,0,0,1.01,1.63,
                                             
                                           }
                                           trials.push(completion);
-                                          
+
+                                          var ishiharaReal= {
+                                          type: jsPsychSurveyMultiSelect,
+                                          questions: [
+                                              {prompt: "Experimenter: please complete ishihara plates", name: 'colorvision', rows: "1", columns: "3", required: true,
+                                              options: ["N", "D", "NA"],
+                                                  horizontal: false,
+                                                  required: true,
+                                                  name: 'ishihara'},
+                                              ],
+                                          }
+                                        trials.push(ishiharaReal);
+                                                                            
                                           
                                           
                                           
                                           trials.push({
                                             type: jsPsychFullscreen,
                                             fullscreen_mode: false
-                                          })
+                                          });
+
+                                          var finalScreen= {
+                                          type: jsPsychHtmlButtonResponse,
+                                          stimulus:'<p>Experiment complete! You may now close the experiment.</p>',
+                                          css_classes:['text']
+                                          }
+    timeline.push(ishiharaReal);
                                           
                                           
                                           
