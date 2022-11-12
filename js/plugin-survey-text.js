@@ -209,7 +209,7 @@ var jsPsychSurveyText = (function (jspsych) {
               // save data
               var trialdata = {
                   rt: response_time,
-                  response: question_data,
+                  response: JSON.stringify(question_data),
               };
               display_element.innerHTML = "";
               // next trial

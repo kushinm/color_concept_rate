@@ -235,7 +235,7 @@ var jsPsychSurveyMultiSelect = (function (jspsych) {
               // save data
               var trial_data = {
                   rt: response_time,
-                  response: question_data,
+                  response: JSON.stringify(question_data),
                   question_order: question_order,
               };
               display_element.innerHTML = "";
