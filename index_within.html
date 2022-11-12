@@ -834,7 +834,7 @@
                                                   concept2color:getAdjustedColors(11),
                                                   semanticCond: "Low",
                                                   congruenceCond: "True",
-                                                  innerHigh:true
+                                                  innerHigh:false
                                                 },
                                                 {
                                                   type:jsPsychHtmlKeyboardResponse,
@@ -960,7 +960,7 @@
                                                                       concept2color:getAdjustedColors(63),
                                                                       semanticCond: "HIGH",
                                                                       congruenceCond: "False",
-                                                                      innerHigh:true
+                                                                      innerHigh:false
                                                                     }
                                                                     
                                                                     )
@@ -1167,7 +1167,7 @@
                                                                                       },
                                                                                       congruenceCond:jsPsych.timelineVariable('congruence'),
                                                                                     semanticCond:jsPsych.timelineVariable('semanticdist'),
-                                                                                  innerHigh:true
+                                                                                    innerHigh:jsPsych.timelineVariable('innerHigh'),
                                                                                       }
                                                                                       
                                                                                       
