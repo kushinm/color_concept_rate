@@ -31,7 +31,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
             innerHigh: {
                 type: jspsych.ParameterType.BOOL,
                 pretty_name: "innerHigh",
-                default: true,
+                default: false,
             },
             trial_duration: {
                 type: jspsych.ParameterType.INT,
