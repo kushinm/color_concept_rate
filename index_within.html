@@ -43,7 +43,7 @@
   
   
   <script type="text/javascript">
-    console.log('V5')
+    console.log('V5.5')
     
     
     // function to adjust the colors for the particular monitor the experiment is being conducted on.
@@ -774,7 +774,8 @@
                                         concept2color:getAdjustedColors(54),
                                         semanticCond: "HIGH",
                                         congruenceCond: "True",
-                                        innerHigh:true
+                                        innerHigh:true,
+                                        practiceTrial:1
                                       },
                                       {
                                         type:jsPsychHtmlKeyboardResponse,
@@ -836,9 +837,10 @@
                                                   concept2:'leisure',
                                                   concept1color:getAdjustedColors(46),
                                                   concept2color:getAdjustedColors(11),
-                                                  semanticCond: "Low",
+                                                  semanticCond: "LOW",
                                                   congruenceCond: "True",
-                                                  innerHigh:false
+                                                  innerHigh:false,
+                                                  practiceTrial:1
                                                 },
                                                 {
                                                   type:jsPsychHtmlKeyboardResponse,
@@ -899,9 +901,10 @@
                                                             concept2:'night',
                                                             concept1color:getAdjustedColors(50),
                                                             concept2color:getAdjustedColors(24),
-                                                            semanticCond: "Low",
+                                                            semanticCond: "LOW",
                                                             congruenceCond: "False",
-                                                            innerHigh:true
+                                                            innerHigh:true,
+                                                            practiceTrial:1
                                                           },
                                                           {
                                                             type:jsPsychHtmlKeyboardResponse,
@@ -960,6 +963,7 @@
                                                                       css_classes: ['text'],
                                                                       concept1: 'strawberry',
                                                                       concept2:'mango',
+                                                                      practiceTrial:1,
                                                                       concept1color:getAdjustedColors(71),
                                                                       concept2color:getAdjustedColors(63),
                                                                       semanticCond: "HIGH",

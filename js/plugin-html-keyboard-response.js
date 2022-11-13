@@ -99,6 +99,10 @@ var jsPsychHtmlKeyboardResponse = (function (jspsych) {
               // pretty_name: "Allow keys",
               default: true,
           },
+          practiceTrial:{
+            type: jspsych.ParameterType.INT,
+            default: null,
+        },
   
         },
     };
@@ -170,6 +174,7 @@ var jsPsychHtmlKeyboardResponse = (function (jspsych) {
                   concept2color: trial.concept2color,
                   congruenceCond: trial.congruenceCond,
                   semanticCond: trial.semanticCond,
+                  practiceTrial: trial.practiceTrial,
               
                 };
                 // clear the display
