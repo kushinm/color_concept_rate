@@ -76,7 +76,7 @@ var jsPsychHtmlKeyboardResponse = (function (jspsych) {
           innerHigh: {
               type: jspsych.ParameterType.BOOL,
               pretty_name: "innerHigh",
-              default: true,
+              default: false,
           },
           concept1color: {
               type: jspsych.ParameterType.STRING,
