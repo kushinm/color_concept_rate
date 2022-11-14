@@ -188,7 +188,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                     correctCity:trial.correctCity,
                     set:trial.set,
                     practiceTrial: trial.practiceTrial,
-                    legendOrder: legendOrder
+                    condition: JSON.stringify(legendOrder)
                 };
                 this.jsPsych.finishTrial(trial_data);
             };
