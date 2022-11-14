@@ -113,7 +113,10 @@ var jsPsychCongruenceGraph = (function (jspsych) {
 
             $("#jspsych-content").css('max-width', '750px');
             display_element.innerHTML='';
-            
+
+            var legendOrder = jsPsych.randomization.sampleBernoulli(.5)
+
+            if(legendOrder==0){
             
             display_element.innerHTML+=(`<div class="canvas-container" id="container" style="position:relative; height:400px;width:900px;margin-left:auto;margin-right: auto;  margin-top: 5px;background: rgba(61, 58, 57)">\
             <canvas id="myChart" style="float:left;z-index: 1;height: 100%; width:50%; margin-left:auto;margin-right: auto; top:0px;">\
@@ -135,7 +138,31 @@ var jsPsychCongruenceGraph = (function (jspsych) {
             background-color: ${trial.concept2color};"></div><p style="font-size:35px; margin-top: 15px;float:left; color:${trial.fontColor}">${trial.concept2}</p></div></div>\
             <div id = "grid" style = "height:100%;width:100%;margin-left:auto;margin-right: auto;  margin-top: 5px;background:  rgba(61, 58, 57)"></div>\
             </div>`
-            );
+            )} else if(legendOrder==1){
+            
+            display_element.innerHTML+=(`<div class="canvas-container" id="container" style="position:relative; height:400px;width:900px;margin-left:auto;margin-right: auto;  margin-top: 5px;background: rgba(61, 58, 57)">\
+            <canvas id="myChart" style="float:left;z-index: 1;height: 100%; width:50%; margin-left:auto;margin-right: auto; top:0px;">\
+            </canvas>\
+            <div id="legend" style="margin-top:100px;float:right;width:35%">\
+            <div id = "item1" style = "height:65px;">\
+            <div id="box1"  style = "float: left;\
+            height: 40px;\
+            width: 40px;\
+            margin: 15px;\
+            clear: both;\
+            background-color: ${trial.concept2color};"></div><p style="font-size:35px; margin-top: 15px;float:left; color:${trial.fontColor}">${trial.concept2}</p></div>\
+            <div id = "item2" style = "height:65px;">\
+            <div id="box2"  style = "float: left;\
+            height: 40px;\
+            width: 40px;\
+            margin: 15px;\
+            clear: both;\
+            background-color: ${trial.concept1color};"></div><p style="font-size:35px; margin-top: 15px;float:left; color:${trial.fontColor}">${trial.concept1}</p></div></div>\
+            <div id = "grid" style = "height:100%;width:100%;margin-left:auto;margin-right: auto;  margin-top: 5px;background:  rgba(61, 58, 57)"></div>\
+            </div>`
+            )
+
+            }
             
             
             const end_trial = () => {
@@ -161,6 +188,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                     correctCity:trial.correctCity,
                     set:trial.set,
                     practiceTrial: trial.practiceTrial,
+                    legendOrder: legendOrder
                 };
                 this.jsPsych.finishTrial(trial_data);
             };
