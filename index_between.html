@@ -683,7 +683,7 @@
                           var instructions = {
                             type: jsPsychInstructions,
                             pages:[`<div style ="text-align:left;font-size:20px;line-height:150%"><p>\
-                              In this task you will be presented with bar charts showing data about different pairs of cities across the country, like the one below.\
+                              In this task you will be presented with bar charts showing data about a pair of cities, like the one below.\
                               For each chart you will be asked a question about the data.<br>
                               <br>
                               Each trial will have the following sequence:<br>
@@ -698,7 +698,7 @@
                               `<div style ="text-align:left;font-size:20px;line-height:150%"><p>
                                 To respond, please use the left arrow to choose the city on the left (in this example, City A) and use the right arrow key to choose the city on the right (in this example, City B).
                                 <br>
-                                The trials will be grouped into blocks based on the pair of cities. At the end of each block you can take a break and will be told the percent of correct responses for that block.<br>
+                                
                                 
                                 If you have any questions please ask them now. If not, we will begin with 2 practice trials. 
                                 Please press 'Next' or the left arrow key to begin.
@@ -851,7 +851,7 @@
                                                                     trials.push({
                                                                       type: jsPsychHtmlKeyboardResponse,
                                                                       stimulus: `Good job! You have completed the practice trials.<br>\ 
-                                                                      We will now begin with block 1 of the experiment. Please press the spacebar to begin.`,
+                                                                      We will now begin with the experiment. Please press the spacebar to begin.`,
                                                                       css_classes:['text'],
                                                                       choices:[' ']
                                                                       
@@ -1076,7 +1076,7 @@
                                                                                         choices: [' '],
                                                                                         css_classes:['text']
                                                                                       }
-                                                                                      trials.push(blockBreak)
+                                                                                      // trials.push(blockBreak)
                                                                                       
                                                                                       if(block==3||block==7||block==11){
                                                                                         
@@ -1088,13 +1088,13 @@
                                                                                           css_classes:['text']
                                                                                           
                                                                                         }
-                                                                                        trials.push(progressBreak)
+                                                                                        // trials.push(progressBreak)
                                                                                         
                                                                                       }
                                                                                     }
                                                                                     
                                                                                     var completion= {
-                                                                                      stimulus:'Good job! You have completed all the blocks!<br>\
+                                                                                      stimulus:'Good job! You have completed the experiment!<br>\
                                                                                       Please press the spacebar and call in the experimenter to begin a color vision check.',
                                                                                       css_classes: ['text'],
                                                                                       
