@@ -380,7 +380,7 @@ var jsPsychCongruenceGraph = (function (jspsych) {
                         creategrid();
                         // runRefresh=false;
                         
-                    }, 1000);
+                    }, 750);
         
                
                     
